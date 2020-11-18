@@ -7,8 +7,9 @@
     //height: 250px;
     padding: 1em;
     text-align: center;
-    border: 1px solid #ccc;
+    border: 1px solid #aaa;
     border-radius: 10px;
+    box-shadow: 8px 8px 5px 0 #ddd;
         
     .title_text {
         //padding-left: 6em;
@@ -25,9 +26,10 @@
         border-bottom: 1px solid #ccc;
         font-size: large;
         
-        &:focus, &:active, &:focus{
-            border: 0px none;
-            border-bottom: 1px solid #red;
+        &:focus, &:active, &:hover{
+            outline: none;
+            //border: 0px none;
+            border-bottom: 1px solid red;
         }
     }
     
@@ -42,6 +44,11 @@
             border: 1px solid #bbb;
             border-radius: 5px;
             background-color: #fff;
+            
+            &:hover {
+                color: red;
+                border-color: red;
+            }
         }
     }
 }
