@@ -1,0 +1,55 @@
+// Place all the styles related to the login controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#login {
+    display: block;
+    padding: 1em;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-right: 1em;
+    margin-left: 1em;
+        
+    .title_text {
+        //padding-left: 6em;
+        text-align: left;
+        color: #a3a3a3;
+        font-size: x-large;
+    }
+    
+    .text_field {
+        margin-bottom: 1em;
+        margin-left: 1em;
+        margin-right: 1em;
+        border: 0px none;
+        border-bottom: 1px solid #ccc;
+        font-size: large;
+        
+        &:focus, &:active, &:focus{
+            border: 0px none;
+            border-bottom: 1px solid #red;
+        }
+    }
+    
+    .submit {
+        text-align: right;
+        
+        .button {
+            text-align: center;
+            font-size: large;
+            color: #a3a3a3;
+            text-align: right;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+    }
+}
+
+#login_main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
