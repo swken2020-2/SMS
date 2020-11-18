@@ -4,12 +4,11 @@
 
 #login {
     display: block;
+    //height: 250px;
     padding: 1em;
     text-align: center;
     border: 1px solid #ccc;
     border-radius: 10px;
-    margin-right: 1em;
-    margin-left: 1em;
         
     .title_text {
         //padding-left: 6em;
@@ -49,7 +48,8 @@
 
 #login_main {
     display: flex;
+    //width: 500px;
+    height: 100vh;
     justify-content: center;
     align-items: center;
-    height: 100%;
 }
