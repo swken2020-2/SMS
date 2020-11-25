@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_11_25_060224) do
+=======
+ActiveRecord::Schema.define(version: 2020_11_25_043919) do
+>>>>>>> create_subject
 
   create_table "profiles", force: :cascade do |t|
     t.string "name"
     t.binary "icon"
     t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
