@@ -1,2 +1,14 @@
-<h1>Subjects#index</h1>
-<p>Find me in app/views/subjects/index.html.erb</p>
+<div>
+    <div>
+        <%= link_to '戻る', root_path %>
+        <% if isTeacher(-2) %>
+            <%= link_to '科目を作成する', subjects_create_path %>
+        <% else %>
+            <%= link_to '履修登録をする', courses_path %>
+        <% end %>
+    </div>
+    <hr />
+    <div>
+        
+    </div>
+</div>
