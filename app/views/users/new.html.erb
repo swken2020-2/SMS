@@ -1,0 +1,19 @@
+<%= form_for @user , url: {action: :create} do |f| %>
+<div id="login_main">
+  <div id="login">
+        <div class="title_text">
+            ID(メールアドレス)
+        </div>
+        <%= text_field_tag :email, '',  class: 'text_field' %>
+        
+        <div class="title_text">
+            パスワード
+        </div>
+        <%= password_field_tag  :password, '', class: 'text_field' %>
+        
+        <div class="submit">
+            <%= submit_tag '登録', class: 'button' %>
+        </div>
+  </div>
+</div>
+<% end %>
