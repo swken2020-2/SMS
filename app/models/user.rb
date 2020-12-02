@@ -4,13 +4,14 @@ class User < ApplicationRecord
     
     has_one :profile
     
-    def self.authenticate(email,password)
+    def self.authenticate(email, pass)
         user = find_by(email: email)
         return false if user.nil?
-        if BCrypt::Password.new(user.password) == password
-            true
+        p "#{BCrypt::Password.new(user.password) == pass}"
+        if (BCrypt::Password.new(user.password) == pass) then
+            return true
         else
-            false
+            return false
         end
     end
 end

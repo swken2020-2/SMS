@@ -1,8 +1,9 @@
 class LoginController < ApplicationController
     
     def login
-      if User.authenticate(params[:email], params[:password])
-        session[:login_uid] = params[:password]
+        p params
+      if User.authenticate(params[:uid], params[:pass])
+        session[:login_uid] = params[:pass]
         redirect_to root_path
       else
         render :error

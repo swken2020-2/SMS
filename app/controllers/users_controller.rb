@@ -4,8 +4,9 @@ class UsersController < ApplicationController
   end
   
   def create
-    p = BCrypt::Password.create(params[:passwprd])
-    user= User.new(email:params[:email], password: p)
+    pass = BCrypt::Password.create(params[:password])
+    p pass
+    user= User.new(email:params[:email], password: pass)
     pr = Profile.new(
       name: params[:email]
     )
