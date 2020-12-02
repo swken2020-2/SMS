@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_02_040623) do
+ActiveRecord::Schema.define(version: 2020_12_02_050334) do
+
+  create_table "course_registrations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "subject_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.integer "user_id"

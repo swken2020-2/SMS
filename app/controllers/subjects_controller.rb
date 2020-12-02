@@ -1,6 +1,6 @@
 class SubjectsController < ApplicationController
   def index
-    
+    @subjects = User.first.course_registrations.all
   end
   
   def new
