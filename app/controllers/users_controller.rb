@@ -6,6 +6,6 @@ class UsersController < ApplicationController
   def create
     user= User.new(email:params[:email],password:params[:password])
     user.save
-    redirect_to login_path
+    redirect_to '/login/index'
   end
 end
