@@ -1,6 +1,7 @@
 
 Rails.application.routes.draw do
   get 'users/new'
+  post 'users/create'
   root 'main#index'
 
   resources :subjects, only: [:index, :new, :create, :destroy]

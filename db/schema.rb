@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_060224) do
+ActiveRecord::Schema.define(version: 2020_12_02_040623) do
 
   create_table "profiles", force: :cascade do |t|
+    t.integer "user_id"
     t.string "name"
     t.binary "icon"
     t.string "type"

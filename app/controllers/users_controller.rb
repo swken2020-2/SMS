@@ -4,8 +4,13 @@ class UsersController < ApplicationController
   end
   
   def create
-    user= User.new(email:params[:email],password:params[:password])
+    p = BCrypt::Password.create(params[:passwprd])
+    user= User.new(email:params[:email], password: p)
+    pr = Profile.new(
+      name: params[:email]
+    )
+    user.profile = pr
     user.save
-    redirect_to '/login/index'
+    redirect_to login_login_path
   end
 end
