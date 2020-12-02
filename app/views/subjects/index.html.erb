@@ -10,9 +10,19 @@
     <hr />
     <div>
         <% @subjects.each do |sub| %>
-            <div>
-                <%= Subject.find(sub.subject_id).name %>
-                <%= link_to '履修取り消し', course_path(id: sub.subject_id), method: :delete %>
+            <div id="subject_plate">
+                
+                <div class="name">
+                    <div class="decoration">
+                        <%= Subject.find(sub.subject_id).name %>
+                    </div>
+                </div>
+                <%= link_to(course_path(id: sub.subject_id), method: :delete) do %>
+                    <button class="button">
+                        <div class="decoration">履修を取り消す</div>
+                    </button>
+                <% end %>
+                
                 <%#= sub.name %>
             </div>
         <% end %>

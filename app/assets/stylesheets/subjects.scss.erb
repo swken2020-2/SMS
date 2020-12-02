@@ -1,0 +1,49 @@
+// Place all the styles related to the subjects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#subject_plate {
+    margin-bottom: 1rem;
+    margin-left: 1em;
+    margin-right: 1em;
+    padding-right: 1em;
+    padding-left: 1em;
+    height: 200px;
+    
+    background-image: url("<%= asset_path('neko.jpeg') %>");
+    background-size: cover;
+    
+    position: relative;
+    
+    .name {
+        font-size: xxx-large;
+        
+    }
+    
+    .button {
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+        
+        background-color: transparent;
+        appearance: none;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        //padding: 5px;
+        font-size: normal;
+        font-weight: bold;
+    }
+    
+    .decoration {
+        text-shadow:
+            1px 1px 1px white,
+            -1px 1px 1px white,
+            1px -1px 1px white,
+            -1px -1px 1px white,
+            1px 1px 1px white,
+            1px 1px 1px white,
+            -1px 1px 1px white,
+            1px -1px 1px white;
+    }
+}
