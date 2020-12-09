@@ -6,6 +6,9 @@
     <% s.each do |sub| %>
         <div id="subject_plate">
             
+            <div class="link">
+                <%= link_to '', subject_path(sub) %>
+            </div>            
             <div class="name">
                 <div class="decoration">
                     <%= Subject.find(sub).name %>

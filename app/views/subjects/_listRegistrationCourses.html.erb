@@ -2,9 +2,12 @@
     <div>
         履修中の科目
     </div>
+    
     <% @subjects.each do |sub| %>
-        <div id="subject_plate">
-            
+        <div id="subject_plate" style="background-image : url(<%= asset_path('neko.jpeg') %>)">
+            <div class="link">
+                <%= link_to '', subject_path(sub) %>
+            </div>
             <div class="name">
                 <div class="decoration">
                     <%= Subject.find(sub).name %>

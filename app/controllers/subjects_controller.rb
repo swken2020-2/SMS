@@ -26,6 +26,13 @@ class SubjectsController < ApplicationController
     redirect_to subjects_path
   end
   
+  def show
+    id = params[:id]
+    @subject = Subject.find_by(id: id)
+    
+    @times = @subject.subject_time
+  end
+  
   def destroy
     
   end
