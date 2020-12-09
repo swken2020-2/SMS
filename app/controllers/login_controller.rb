@@ -7,7 +7,7 @@ class LoginController < ApplicationController
 
         p params
       if User.authenticate(params[:uid], params[:pass])
-        session[:login_uid] = params[:pass]
+        session[:login_uid] = User.find_by(email: params[:uid]).id
         redirect_to '/main/index'
       else
         render :error
