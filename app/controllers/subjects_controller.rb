@@ -1,6 +1,9 @@
 class SubjectsController < ApplicationController
+  include UsersHelper
+  include SubjectsHelper
+  
   def index
-    @subjects = User.first.course_registrations
+    @subjects = User.find(getUserId).course_registrations.pluck(:subject_id)
   end
   
   def new
@@ -13,6 +16,11 @@ class SubjectsController < ApplicationController
       name: name
     )
     
+    sp = SubjectProfile.new(
+      teacher_id: getUserId
+    )
+    
+    @s.subject_profile = sp
     @s.save
     
     redirect_to subjects_path

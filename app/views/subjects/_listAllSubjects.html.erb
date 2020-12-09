@@ -1,0 +1,23 @@
+<% s = getNonResponsibleSubjects %>
+<div>
+    <div>
+        担当ではない科目
+    </div>
+    <% s.each do |sub| %>
+        <div id="subject_plate">
+            
+            <div class="name">
+                <div class="decoration">
+                    <%= Subject.find(sub).name %>
+                </div>
+            </div>
+            <%= link_to(course_path(id: sub), method: :delete) do %>
+                <% if !isTeacher %>
+                    <button class="button">
+                        <div class="decoration">履修を取り消す</div>
+                    </button>
+                <% end %>
+            <% end %>
+        </div>
+    <% end %>
+</div>

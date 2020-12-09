@@ -1,13 +1,13 @@
 class LoginController < ApplicationController
     
     def login
-        p params
-      if User.authenticate(params[:uid], params[:pass])
-        session[:login_uid] = params[:pass]
-        redirect_to root_path
-      else
-        render :error
-      end
+        if User.authenticate(params[:uid], params[:pass])
+            u = User.find_by(email: params[:uid])
+            session[:login_uid] = u.id
+            redirect_to root_path
+        else
+            render :error
+        end
     end# パスワードがあっているかどうかとか
     
     def logout

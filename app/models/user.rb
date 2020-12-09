@@ -4,6 +4,8 @@ class User < ApplicationRecord
     
     has_one :profile
     
+    #has_many :subject_profiles
+    
     # 履修
     has_many :course_registrations
     has_many :course_registration_subjects, through: :course_registrations, source: :subject

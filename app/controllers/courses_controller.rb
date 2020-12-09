@@ -1,4 +1,6 @@
 class CoursesController < ApplicationController
+    include UsersHelper
+    
     def index
         @s = Subject.all
     end
@@ -6,7 +8,7 @@ class CoursesController < ApplicationController
     def create
         id = params[:id]
         sub = Subject.find(id)
-        u = User.first
+        u = User.find(getUserId)
         # u.course_registrations << sub
         sub.course_registration_users << u
         
@@ -15,7 +17,7 @@ class CoursesController < ApplicationController
     
     def destroy
         sub = Subject.find(params[:id])
-        user = User.first
+        user = User.find(getUserId)
         sub.course_registration_users.destroy(user.id)
         
         redirect_to subjects_path

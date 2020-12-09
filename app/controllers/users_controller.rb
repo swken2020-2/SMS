@@ -5,10 +5,12 @@ class UsersController < ApplicationController
   
   def create
     pass = BCrypt::Password.create(params[:password])
-    p pass
+    type = 0
+    type = 2 if User.all.count == 0
     user= User.new(email:params[:email], password: pass)
     pr = Profile.new(
-      name: params[:email]
+      name: params[:email],
+      role: type
     )
     user.profile = pr
     user.save
