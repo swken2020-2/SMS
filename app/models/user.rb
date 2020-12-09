@@ -1,7 +1,8 @@
 class User < ApplicationRecord
     validates :email, presence: true, uniqueness: true
+    validates :email,format:{with: /\A[\w+\-]+@[a-z\d\-.]+\.[a-z]+\z/i}
     validates :password, presence: true
-    
+    validates :password, length: { minimum: 8 }
     has_one :profile
     
     # 履修
