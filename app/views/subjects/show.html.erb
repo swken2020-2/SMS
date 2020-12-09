@@ -1,0 +1,23 @@
+<div id="subject">
+    <div class="title" style="background-image : url(<%= asset_path('neko.jpeg') %>)">
+        <%= @subject.name %>
+    </div>
+</div>
+
+<div>
+    <% ti = 0 %>
+    
+    <% @times.each do |t| %>
+        <% if Subject.isTeacherOfThis(Subject.getIdFromTime(t.id), getUserId) and ti == 0 %>
+            <%= link_to '出席の確認', attend_path(Subject.getIdFromTime(t.id)) %>
+        <% end %>
+    
+        <% ti = ti + 1 %>
+        <div>
+            (<%= t.id %>) 第<%= ti %>回 <%= t.title %>
+        </div>
+
+        
+        <%= Attend.getStatus(t.id, getUserId()) %>
+    <% end %>
+</div>

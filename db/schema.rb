@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_02_111040) do
+ActiveRecord::Schema.define(version: 2020_12_09_050354) do
+
+  create_table "attends", force: :cascade do |t|
+    t.integer "subject_time_id"
+    t.integer "user_id"
+    t.integer "status"
+    t.string "memo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "course_registrations", force: :cascade do |t|
     t.integer "user_id"
@@ -34,6 +43,13 @@ ActiveRecord::Schema.define(version: 2020_12_02_111040) do
     t.binary "image"
     t.string "type"
     t.integer "teacher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subject_times", force: :cascade do |t|
+    t.integer "subject_id"
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

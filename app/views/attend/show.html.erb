@@ -1,0 +1,33 @@
+<div>
+    <% ti = 0 %>
+    
+    <% @a.each do |t| %>
+        <% ti = ti + 1 %>
+        
+        <div>
+            第<%= ti %>回
+        </div>
+        <table border="1">
+            <tr>
+                <th>
+                    名前
+                </th>
+                <th>
+                ステータス
+                </th>
+            </tr>
+            
+            <% t.each do |t2| %>
+                <tr>
+                    <td>
+                        <%= User.find(t2.user_id).email %>
+                    </td>
+                    <td>
+                        <%= Attend.status2str(t2.status) %>
+                    </td>
+                </tr>
+            <% end %>
+        </table>
+        <br />
+    <% end %>
+</div>

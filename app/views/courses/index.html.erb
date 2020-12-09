@@ -4,8 +4,21 @@
 <% @s.each do |subject| %>
     <div>
         <%= subject.name %>
-        <div>
-            <%= link_to '登録する', courses_path(id: subject.id), method: :create %>
-        </div>
+        <% if CourseRegistration.isRegistered(subject.id, getUserId) %>
+            <div>
+                すでに履修中です 
+                <%= link_to(course_path(id: subject.id), method: :delete) do %>
+                    <% if !isTeacher %>
+                        <button class="button">
+                            <div class="decoration">履修を取り消す</div>
+                        </button>
+                    <% end %>
+                <% end %>
+            </div>
+        <% else %>
+            <div>
+                <%= link_to '登録する', courses_path(id: subject.id), method: :create %>
+            </div>
+        <% end %>
     </div>
 <% end %>

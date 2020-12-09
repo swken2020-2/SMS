@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   get 'users/new'
   post 'users/create'
   get 'main/index'
-  resources :subjects, only: [:index, :new, :create, :destroy]
+  resources :subjects
   resources :courses, only: [:index, :create, :destroy]
+  resources :attend, only: [:show, :edit, :update]
   root'login#index'
   get 'login', to: 'login#index'
   get 'login/login', to: 'login#index'
