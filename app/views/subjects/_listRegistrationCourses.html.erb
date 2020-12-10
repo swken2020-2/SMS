@@ -3,23 +3,25 @@
         履修中の科目
     </div>
     
-    <% @subjects.each do |sub| %>
-        <div id="subject_plate" style="background-image : url(<%= asset_path('neko.jpeg') %>)">
-            <div class="link">
-                <%= link_to '', subject_path(sub) %>
-            </div>
-            <div class="name">
-                <div class="decoration">
-                    <%= Subject.find(sub).name %>
+    <div id="group">
+        <% @subjects.each do |sub| %>
+            <div id="subject_plate" style="background-image : url(<%= asset_path('neko.jpeg') %>)">
+                <div class="link">
+                    <%= link_to '', subject_path(sub) %>
                 </div>
-            </div>
-            <%= link_to(course_path(id: sub), method: :delete) do %>
-                <% if !isTeacher %>
-                    <button class="button">
-                        <div class="decoration">履修を取り消す</div>
-                    </button>
+                <div class="name">
+                    <div class="decoration">
+                        <%= Subject.find(sub).name %>
+                    </div>
+                </div>
+                <%= link_to(course_path(id: sub), method: :delete) do %>
+                    <% if !isTeacher %>
+                        <button class="button">
+                            <div class="decoration">履修を取り消す</div>
+                        </button>
+                    <% end %>
                 <% end %>
-            <% end %>
-        </div>
-    <% end %>
+            </div>
+        <% end %>
+    </div>
 </div>
