@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_09_050354) do
+ActiveRecord::Schema.define(version: 2020_12_10_125002) do
 
   create_table "attends", force: :cascade do |t|
     t.integer "subject_time_id"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_12_09_050354) do
     t.integer "user_id"
     t.string "name"
     t.binary "icon"
-    t.string "type"
+    t.string "icontype"
     t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_12_09_050354) do
   create_table "subject_profiles", force: :cascade do |t|
     t.integer "subject_id"
     t.binary "image"
-    t.string "type"
+    t.string "icontype"
     t.integer "teacher_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -1,0 +1,25 @@
+<% if params[:id].to_i != getUserId.to_i %>
+    <div>
+        別のアカウントの設定を変更しています！！！
+    </div>
+<% end %>
+
+<!--- ここに保存の結果を表示したい -->
+
+<div>
+    <%= form_for @user, url: {action: :update} do |f| %>
+        <div id="card">
+            <div>
+                E-メール
+                <%= f.text_field :email %>
+            </div>
+            <div>
+                <%= f.submit '保存' %>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+<div>
+    別の情報を変更したいですか？<%= link_to 'ここをクリック', edit_profile_path(@user.id) %>
+</div>

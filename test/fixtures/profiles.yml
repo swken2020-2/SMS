@@ -4,12 +4,12 @@ one:
   user_id: 1
   name: MyString
   icon: 
-  type: 
+  icontype: MyString
   role: 1
 
 two:
   user_id: 1
   name: MyString
   icon: 
-  type: 
+  icontype: MyString
   role: 1

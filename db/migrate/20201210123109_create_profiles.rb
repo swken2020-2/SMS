@@ -4,7 +4,7 @@ class CreateProfiles < ActiveRecord::Migration[5.2]
       t.integer :user_id
       t.string :name
       t.binary :icon
-      t.string :type
+      t.string :icontype
       t.integer :role
 
       t.timestamps

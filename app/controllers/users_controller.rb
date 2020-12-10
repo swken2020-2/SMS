@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include UsersHelper
+  
   def new
     @user=User.new
   end
@@ -13,11 +15,23 @@ class UsersController < ApplicationController
       name: params[:email],
       role: type
     )
+    
     @user.profile = pr
     if @user.save
-    redirect_to login_login_path
+      redirect_to login_login_path
     else
       render'new'
     end
+  end
+  
+  def edit
+    pi = params[:id]
+    
+    if !User.hasPermission2EditProfile(getUserId, pi) then
+      redirect_to root_path
+      return
+    end
+    
+    @user = User.find(pi)
   end
 end

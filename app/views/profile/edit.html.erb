@@ -1,0 +1,44 @@
+<div>
+    <%= image_tag("/image/user?id=#{params[:id]}") %>
+</div>
+<% disabled = true %>
+<% if params[:id].to_i != getUserId.to_i %>
+    <% disabled = false %>
+    <div>
+        別のアカウントの設定を変更しています！！！
+    </div>
+<% end %>
+
+<!--- ここに保存の結果を表示したい -->
+
+<div>
+    <%= form_for @profile, url: {action: :update} do |f| %>
+        <div id="card">
+            <div>
+                <%= f.text_field :name %>
+            </div>
+            
+            <div>
+                <%= f.select :role,
+                    [
+                        ["生徒", 0],
+                        ["教師", 1],
+                        ["管理者", 2]
+                    ], 
+                    {},
+                    :disabled => disabled
+                %>
+                <% if disabled %>
+                    自身の役割を変更することはできません。
+                <% end %>
+            </div>
+            <div>
+                <%= f.file_field :icon %>
+            </div>
+            
+            <div>
+                <%= f.submit '保存' %>
+            </div>
+        </div>
+    <% end %>
+</div>
