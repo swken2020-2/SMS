@@ -2,16 +2,56 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#header {
+    background-color:#EDF7FF;
+    //padding:20px;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 1em;
+    
+    h1 {
+        margin: 0;
+        margin-bottom: 15px;
+    }
+}
+
 #main_toolbar {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    //padding-bottom: 5px;
+
     position: relative;
-    justify-content: space-evenly;
+    justify-content: space-between;
     display: flex;
     flex-wrap: wrap;
+    //max-width: 10em;
+    background-color:#EDF7FF;
+    
+    flex: 1;
     
     .text {
+        background-color:#e5ffff;
+        margin-right: 0.5em;
+        margin-left: 0.5em;
+        padding-right: 1em;
+        padding-left: 1em;
+        margin-bottom: 3px;
+        
         text-align: center;
+        min-width: auto;
+        width: auto;
+        white-space: nowrap;
         position: relative;
-        flex: 1;
+        flex: 6;
+        
+        border-radius: 25px;
+        border: 2px solid #999;
+        
+        &:hover {
+            background-color:#a5ffff;
+        }
         
         .url{
             a {

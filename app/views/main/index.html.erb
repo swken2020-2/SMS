@@ -1,28 +1,4 @@
-<div style="background-color:#EDF7FF;width:1250px;padding:20px;"><h1>近畿大学福岡キャンパス</h1></div>
-<hr>
-<div id="main_toolbar">
-    <div class="text"><div class="link">
-        <%= link_to '履修科目一覧', subjects_path %></div>
-    </div>
-    <div class="text"><div class="link">
-        <%= link_to '時間割' %></div>
-    </div>
-    <div class="text"><div class="link">
-        <%= link_to '成績照会' %></div>
-    </div>
-    <div class="text"><div class="link">
-        <%= link_to 'アンケート' %></div>
-    </div>
-    <div class="text"><div class="link">
-        <%= link_to '就活関連' %></div>
-    </div>
-    <div class="text"><div class="link">
-        <%= link_to '質問・お問い合わせ' %></div>
-    </div>
-    <div class="text"><div class="link">
-        <%= link_to 'ユーザー設定', edit_user_path(getUserId) %></div>
-    </div>
-</div>
+<%= render 'header' %>
 <!--
 <p align="center">
     <%=link_to'履修科目一覧', subjects_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_10_125002) do
+ActiveRecord::Schema.define(version: 2020_12_10_130659) do
 
   create_table "attends", force: :cascade do |t|
     t.integer "subject_time_id"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_12_10_125002) do
     t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "number"
   end
 
   create_table "subject_profiles", force: :cascade do |t|

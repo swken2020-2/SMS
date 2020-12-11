@@ -29,6 +29,7 @@ class ProfileController < ApplicationController
         
         update = @p.update(
             name: old_p[:name],
+            number: old_p[:number],
             icon: icon,
             icontype: type,
             role: role

@@ -24,3 +24,7 @@ body {
     background-color: #fff;
     margin: 0;
 }
+
+#content {
+    margin: 1em;
+}

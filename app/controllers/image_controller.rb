@@ -1,5 +1,5 @@
 class ImageController < ApplicationController
-    IMAGES_PATH = File.join(Rails.root, 'app', 'assets', 'images', 'default.jpg')
+    DEFAULT_ICON_PATH = File.join(Rails.root, 'app', 'assets', 'images', 'default_icon.jpg')
     
     def user
         u = User.find_by(id: params[:id])
@@ -11,7 +11,7 @@ class ImageController < ApplicationController
             end
         end
         
-        return send_file File.join(IMAGES_PATH), type: 'image/png', disposition: 'inline'
+        return send_file File.join(DEFAULT_ICON_PATH), type: 'image/jpeg', disposition: 'inline'
     end
     
     def subject

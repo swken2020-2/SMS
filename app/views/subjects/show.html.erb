@@ -1,23 +1,61 @@
-<div id="subject">
-    <div class="title" style="background-image : url(<%= asset_path('neko.jpeg') %>)">
-        <%= @subject.name %>
-    </div>
-</div>
-
-<div>
-    <% ti = 0 %>
-    
-    <% @times.each do |t| %>
-        <% if Subject.isTeacherOfThis(Subject.getIdFromTime(t.id), getUserId) and ti == 0 %>
-            <%= link_to '出席の確認', attend_path(Subject.getIdFromTime(t.id)) %>
-        <% end %>
-    
-        <% ti = ti + 1 %>
-        <div>
-            (<%= t.id %>) 第<%= ti %>回 <%= t.title %>
+<%= render template: "main/_header" %>
+<div id="content">
+    <div id="subject">
+        <div class="title">
+            <h1>
+                <%= @subject.name %>
+            </h1>
         </div>
-
+    </div>
+    <div id="notice">
+        <div class="text">
+            <div class="url"><%= link_to ''
+            %></div><div class="title">
+            出席確認のために、ここをクリックしてください (第5回目)</div>
+        </div>
+    </div>
+    
+    <div id="s_toolbar">
+        <div class="text">
+            <div class="url"><%= link_to ''
+            %></div><div class="title">
+            追加</div>
+        </div>
+        <div class="text">
+            <div class="url"><%= link_to ''
+            %></div><div class="title">
+            出席の受付登録</div>
+        </div>
         
-        <%= Attend.getStatus(t.id, getUserId()) %>
-    <% end %>
+        <div class="text">
+            <div class="url"><%= link_to ''
+            %></div><div class="title">
+            メンバー</div>
+        </div>
+            
+        <div class="text">
+            <div class="url"><%= link_to ''
+            %></div><div class="title">
+            設定</div>
+        </div>
+    </div>
+    
+    
+    <div>
+        <% ti = 0 %>
+        
+        <% @times.each do |t| %>
+            <% if Subject.isTeacherOfThis(Subject.getIdFromTime(t.id), getUserId) and ti == 0 %>
+                <%= link_to '出席の確認', attend_path(Subject.getIdFromTime(t.id)) %>
+            <% end %>
+        
+            <% ti = ti + 1 %>
+            <div>
+                (<%= t.id %>) 第<%= ti %>回 <%= t.title %>
+            </div>
+    
+            
+            <%= Attend.getStatus(t.id, getUserId()) %>
+        <% end %>
+    </div>
 </div>
