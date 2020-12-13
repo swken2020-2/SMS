@@ -1,0 +1,19 @@
+<%= form_for @t, url: {action: @fl} do |f| %>
+    <div>
+        講義: <%= Subject.find_by(id: params[:subject_id]).subject_profile.name %> に
+        <%= Subject.find_by(id: params[:subject_id]).subject_time.count + 1 %> 個目を追加します。
+    </div>
+    <%= f.hidden_field :subject_id, :value => params[:subject_id] %>
+    <div>
+        <%= f.label :title, 'タイトル' %>
+        <%= f.text_field :title %>
+    </div>
+    
+    <div>
+        <%= f.label :public, '公開する' %>
+        <%= f.check_box :public %>
+    </div>
+    <div>
+        <%= f.submit '保存' %>
+    </div>
+<% end %>

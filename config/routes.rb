@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :profile, only: [:edit, :update]
   resources :subject_profile, only: [:show, :edit, :update]
   resources :subject_settings, only: [:show, :edit, :update]
+  resources :subject_time, only: [:new, :create, :edit, :update]
   
   root'login#index'
   get 'login', to: 'login#index'

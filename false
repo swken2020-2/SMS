@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20201213075357_add_public_to_subject_time.rb

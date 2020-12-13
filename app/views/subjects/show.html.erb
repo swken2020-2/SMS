@@ -21,11 +21,13 @@
             subject_profile_path(params[:id]) %></div><div class="title">
             この講義について</div>
         </div>
-        <div class="text">
-            <div class="url"><%= link_to ''
-            %></div><div class="title">
-            出席の受付登録</div>
-        </div>
+        <% if isTeacher %>
+            <div class="text">
+                <div class="url"><%= link_to '',
+                new_subject_time_path(subject_id: params[:id]) %></div><div class="title">
+                回を追加</div>
+            </div>
+        <% end %>
         
         <div class="text">
             <div class="url"><%= link_to ''
