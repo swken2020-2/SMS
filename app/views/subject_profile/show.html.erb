@@ -1,0 +1,17 @@
+<%= render template: "main/_header" %>
+<div id="content">
+    <% if CourseRegistration.isRegistered(params[:id], getUserId) || isTeacher %>
+        <%= link_to '戻る', subject_path(params[:id]) %>
+    <% else %>
+        <%= link_to '戻る', courses_path %>
+    <% end %>
+    <div>
+        <%= @sp.name %>
+    </div>
+    <div>
+        教師: <%= User.find_by(id: @sp.teacher_id).profile.name %>
+    </div>
+    <div>
+        <%= @sp.description %>
+    </div>
+</div>

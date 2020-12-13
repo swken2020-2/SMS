@@ -1,0 +1,8 @@
+<div>
+    <%= link_to '戻る', :back %>
+    <% if isTeacher %>
+        <%= link_to '科目を作成する', new_subject_path %>
+    <% else %>
+        <%= link_to '履修登録をする', courses_path %>
+    <% end %>
+</div>

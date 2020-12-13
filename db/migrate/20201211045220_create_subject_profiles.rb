@@ -5,6 +5,7 @@ class CreateSubjectProfiles < ActiveRecord::Migration[5.2]
       t.binary :image
       t.string :icontype
       t.integer :teacher_id
+      t.string :name
 
       t.timestamps
     end

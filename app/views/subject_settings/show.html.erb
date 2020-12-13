@@ -1,0 +1,14 @@
+<%= render template: "main/_header" %>
+<div id="content">
+    <%= link_to '戻る', subject_path(params[:id]) %>
+    # 履修取り消し
+    
+    <% if CourseRegistration.isRegistered(params[:id], getUserId) %>
+        <%= link_to(course_path(id: params[:id]), method: :delete) do %>
+            <button class="button">
+                <div class="decoration">履修を取り消す</div>
+            </button>
+        <% end %>
+    <% end %>
+    
+</div>

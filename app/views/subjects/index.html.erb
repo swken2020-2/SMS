@@ -1,14 +1,6 @@
 <%= render template: "main/_header" %>
-<div>
-    <div>
-        <%= link_to '戻る', root_path %>
-        <% if isTeacher %>
-            <%= link_to '科目を作成する', new_subject_path %>
-        <% else %>
-            <%= link_to '履修登録をする', courses_path %>
-        <% end %>
-    </div>
-    <hr />
+<div id="content">
+    <%= render 'bar' %>
     <div>
         <% if isTeacher %>
             <%= render 'listForStaff' %>

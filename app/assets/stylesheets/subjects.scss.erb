@@ -159,12 +159,12 @@
         
     position: relative;
     flex: 1;
-    border: 3px solid WHITE;
+    border: 2px solid LIGHTGRAY;
     
     &:hover {
         //filter: opacity(50%);
         cursor: pointer;
-        border: 3px solid RED;
+        border: 2px solid RED;
     }
     
     .link {
@@ -182,7 +182,26 @@
         font-size: xx-large;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
+        //white-space: nowrap;
+    }
+    
+    .teacher_name {
+        position: absolute;
+        right: 1em;
+        margin-left: 1em;
+        bottom: 5px;
+        width: auto;
+        
+        .text {
+            width: auto;
+            text-align: right;
+            font-size: medium;
+            color: BLACK;
+            //overflow: hidden;
+            //text-overflow: ellipsis;
+            //white-space: nowrap;
+        }
+        
     }
     
     .button {

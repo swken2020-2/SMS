@@ -1,0 +1,3 @@
+class SubjectSettingsController < ApplicationController
+    
+end

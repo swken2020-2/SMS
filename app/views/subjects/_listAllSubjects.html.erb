@@ -6,23 +6,24 @@
     
     <div id="group">
         <% s.each do |sub| %>
-            <div id="subject_plate"  style="background-image : url(<%= asset_path('neko.jpeg') %>)">
+            <div id="subject_plate"  style="background-image: url(/image/subject?id=<%= sub %>)">
                 
                 <div class="link">
                     <%= link_to '', subject_path(sub) %>
                 </div>            
                 <div class="name">
                     <div class="decoration">
-                        <%= Subject.find(sub).name %>
+                        <%= Subject.find(sub).subject_profile.name %>
                     </div>
                 </div>
-                <%= link_to(course_path(id: sub), method: :delete) do %>
-                    <% if !isTeacher %>
-                        <button class="button">
-                            <div class="decoration">履修を取り消す</div>
-                        </button>
-                    <% end %>
-                <% end %>
+                <div class="teacher_name">
+                    <div class="text">
+                        <div class="decoration">
+                            <% subc = Subject.find_by(id: sub) %>
+                            <%= User.find_by(id: subc.subject_profile.teacher_id).profile.name %>
+                        </div>
+                    </div>
+                </div>
             </div>
         <% end %>
     </div>

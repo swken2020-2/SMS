@@ -3,7 +3,7 @@
 </div>
 <% @s.each do |subject| %>
     <div>
-        <%= subject.name %>
+        <%= subject.subject_profile.name %>
         <% if CourseRegistration.isRegistered(subject.id, getUserId) %>
             <div>
                 すでに履修中です 

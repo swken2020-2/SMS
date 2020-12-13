@@ -3,7 +3,7 @@
     <div id="subject">
         <div class="title">
             <h1>
-                <%= @subject.name %>
+                <%= @subject.subject_profile.name %>
             </h1>
         </div>
     </div>
@@ -11,15 +11,15 @@
         <div class="text">
             <div class="url"><%= link_to ''
             %></div><div class="title">
-            出席確認のために、ここをクリックしてください (第5回目)</div>
+            出席確認のために、ここをクリックしてください</div>
         </div>
     </div>
     
     <div id="s_toolbar">
         <div class="text">
-            <div class="url"><%= link_to ''
-            %></div><div class="title">
-            追加</div>
+            <div class="url"><%= link_to '',
+            subject_profile_path(params[:id]) %></div><div class="title">
+            この講義について</div>
         </div>
         <div class="text">
             <div class="url"><%= link_to ''
@@ -34,8 +34,8 @@
         </div>
             
         <div class="text">
-            <div class="url"><%= link_to ''
-            %></div><div class="title">
+            <div class="url"><%= link_to '',
+            subject_setting_path(params[:id]) %></div><div class="title">
             設定</div>
         </div>
     </div>

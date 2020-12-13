@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :attend, only: [:show, :edit, :update]
   resources :users, only: [:new, :create, :edit, :update, :show]
   resources :profile, only: [:edit, :update]
+  resources :subject_profile, only: [:show, :edit, :update]
+  resources :subject_settings, only: [:show, :edit, :update]
   
   root'login#index'
   get 'login', to: 'login#index'

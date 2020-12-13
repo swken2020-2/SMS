@@ -5,9 +5,11 @@ one:
   image: 
   icontype: MyString
   teacher_id: 1
+  name: MyString
 
 two:
   subject_id: 1
   image: 
   icontype: MyString
   teacher_id: 1
+  name: MyString

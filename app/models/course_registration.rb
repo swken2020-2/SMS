@@ -3,6 +3,7 @@ class CourseRegistration < ApplicationRecord
     belongs_to :subject
     
     def self.isRegistered(subject_id, user_id)
+        subject_id = subject_id.to_i
         subjects = User.find(user_id).course_registrations.pluck(:subject_id)
         return true if subjects.include?(subject_id)
         return false

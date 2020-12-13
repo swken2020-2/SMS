@@ -1,0 +1,2 @@
+module SubjectSettingsHelper
+end
