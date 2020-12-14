@@ -10,6 +10,15 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if !isLoggedIn %>
+      <% if controller_name == "users" && (action_name == "new" || action_name == "create") %>
+        <%= yield %>
+      <% else %>
+        <%= render template: 'login/index' %>
+      <% end %>
+       
+    <% else %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>

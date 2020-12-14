@@ -1,7 +1,5 @@
 <div id="header">
-    <h1>
-        近畿大学福岡キャンパス
-    </h1>
+    <%= render 'title' %>
     
     <div id="main_toolbar">
         <div class="text">
@@ -48,7 +46,7 @@
         
         <div class="text">
             <div class="url"><%= link_to '',
-            edit_user_path(getUserId) %></div><div class="title">
+            settings_path %></div><div class="title">
             設定</div>
         </div>
     </div>

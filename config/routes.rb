@@ -8,10 +8,13 @@ Rails.application.routes.draw do
   resources :courses, only: [:index, :create, :destroy]
   resources :attend, only: [:show, :edit, :update]
   resources :users, only: [:new, :create, :edit, :update, :show]
+  get 'users', to: 'users#new' # リロード対策
   resources :profile, only: [:edit, :update]
   resources :subject_profile, only: [:show, :edit, :update]
   resources :subject_settings, only: [:show, :edit, :update]
   resources :subject_time, only: [:new, :create, :edit, :update]
+  resources :attend_manager, only: [:create, :destroy]
+  resources :settings, only: [:index]
   
   root'login#index'
   get 'login', to: 'login#index'

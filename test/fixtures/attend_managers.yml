@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subject_id: 1
+  subject_time_id: 1
+  expired: 2020-12-14 07:41:56
+
+two:
+  subject_id: 1
+  subject_time_id: 1
+  expired: 2020-12-14 07:41:56

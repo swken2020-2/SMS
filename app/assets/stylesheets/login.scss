@@ -6,16 +6,34 @@
     display: block;
     //height: 250px;
     padding: 1em;
+    padding-top: 0.5em;
     text-align: center;
     border: 1px solid #aaa;
     border-radius: 10px;
     box-shadow: 8px 8px 5px 0 #ddd;
-        
+    
+    .title {
+        text-align: center;
+        //font-size: ;
+        color: #a3a3a3;
+        font-family: fantasy;
+        //font-weight: bold;
+        //padding-bottom: 0.5em;
+        //border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5em;
+    }
+    
+    .error {
+        text-align: left;
+        padding-bottom: 1em;
+    }
+    
     .title_text {
         //padding-left: 6em;
         text-align: left;
         color: #a3a3a3;
         font-size: x-large;
+        float:left;
     }
     
     .text_field {
@@ -25,12 +43,17 @@
         border: 0px none;
         border-bottom: 1px solid #ccc;
         font-size: large;
+        float: right;
         
         &:focus, &:active, &:hover{
             outline: none;
             //border: 0px none;
             border-bottom: 1px solid red;
         }
+    }
+    
+    .reset {
+        clear: both;
     }
     
     .submit {
@@ -51,12 +74,19 @@
             }
         }
     }
+    
+    .other {
+        padding-top: 1em;
+        text-align: left;
+    }
 }
 
 #login_main {
     display: flex;
+    //vertical-align: middle;
     //width: 500px;
     height: 100vh;
+    //height: 100%;
     justify-content: center;
     align-items: center;
 }

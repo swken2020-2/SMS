@@ -1,11 +1,9 @@
-<div>
-    <% ti = 0 %>
-    
+<%= render template: "main/_header" %>
+<div id="content">
+    <%= link_to '戻る', subject_path(params[:id]) %>
     <% @a.each do |t| %>
-        <% ti = ti + 1 %>
-        
         <div>
-            第<%= ti %>回
+            <%= t[:title] %>
         </div>
         <table border="1">
             <tr>
@@ -17,10 +15,14 @@
                 </th>
             </tr>
             
-            <% t.each do |t2| %>
+            <% t[:time].each do |t2| %>
+                <% msg = "" %>
+                <% if !CourseRegistration.isRegistered(params[:id], t2.user_id) %>
+                    <% msg = "(履修取り消し)" %>
+                <% end %>
                 <tr>
                     <td>
-                        <%= User.find(t2.user_id).email %>
+                        <%= "#{User.find(t2.user_id).email}#{msg}" %>
                     </td>
                     <td>
                         <%= Attend.status2str(t2.status) %>

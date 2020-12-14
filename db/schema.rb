@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_13_075357) do
+ActiveRecord::Schema.define(version: 2020_12_14_075042) do
+
+  create_table "attend_managers", force: :cascade do |t|
+    t.integer "subject_id"
+    t.integer "subject_time_id"
+    t.datetime "expired"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "attends", force: :cascade do |t|
     t.integer "subject_time_id"
@@ -56,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_12_13_075357) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "public", default: false, null: false
+    t.boolean "check", default: false, null: false
   end
 
   create_table "subjects", force: :cascade do |t|

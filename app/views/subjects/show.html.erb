@@ -9,9 +9,13 @@
     </div>
     <div id="notice">
         <div class="text">
-            <div class="url"><%= link_to ''
-            %></div><div class="title">
-            出席確認のために、ここをクリックしてください</div>
+            <% if isAvailable(params[:id]) %>
+                <% st = getAvailableTime(params[:id]) %>
+                <div class="url"><%= link_to ''
+                %></div><div class="title">
+                <%= "「#{getTitleFromTimeId(st.subject_time_id)}」での出席確認を忘れないでください！
+                クリックして出席を記録します。"%></div>
+            <% end %>
         </div>
     </div>
     
@@ -21,7 +25,7 @@
             subject_profile_path(params[:id]) %></div><div class="title">
             この講義について</div>
         </div>
-        <% if isTeacher %>
+        <% if Subject.isTeacherOfThis(params[:id], getUserId) %>
             <div class="text">
                 <div class="url"><%= link_to '',
                 new_subject_time_path(subject_id: params[:id]) %></div><div class="title">
@@ -34,6 +38,15 @@
             %></div><div class="title">
             メンバー</div>
         </div>
+        
+                
+        <% if Subject.isTeacherOfThis(params[:id], getUserId) %>
+            <div class="text">
+                <div class="url"><%= link_to '',
+                attend_path(params[:id]) %></div><div class="title">
+                出席の確認</div>
+            </div>
+        <% end %>
             
         <div class="text">
             <div class="url"><%= link_to '',
@@ -42,20 +55,31 @@
         </div>
     </div>
     
-    
     <div>
-        <% ti = 0 %>
-        
         <% @times.each do |t| %>
-            <% if Subject.isTeacherOfThis(Subject.getIdFromTime(t.id), getUserId) and ti == 0 %>
-                <%= link_to '出席の確認', attend_path(Subject.getIdFromTime(t.id)) %>
+            <% msg = "" %>
+            <% if !t.public %>
+                <% msg = "(これは非公開です。生徒からは見えません)" %>
+                <% next if !Subject.isTeacherOfThis(Subject.getIdFromTime(t.id), getUserId) %>
             <% end %>
-        
-            <% ti = ti + 1 %>
+            
             <div>
-                (<%= t.id %>) 第<%= ti %>回 <%= t.title %>
+                <%= "#{t.title}#{msg}" %>
             </div>
-    
+            <div>
+                <% if t.public %>
+                    <%= p "#{getAvailableTimeId(params[:id])} : #{t.id}" %>
+                    <% if getAvailableTimeId(params[:id]) != t.id %>
+                        <% if !t.check %>
+                            <%= link_to '出席確認を開けます', attend_manager_index_path(id: params[:id], time: t.id), method: :post %>
+                        <% else %>
+                            <%= link_to '出席確認を再度開けます', attend_manager_index_path(id: params[:id], time: t.id), method: :post, data: { confirm: "過去にオープンしたことがあるようです。それでもオープンしますか？" } %>
+                        <% end %>
+                    <% else %>
+                        <%= link_to '出席確認を閉じます', attend_manager_path(id: params[:id], time: t.id), method: :delete %>
+                    <% end %>
+                <% end %>
+            </div>
             
             <%= Attend.getStatus(t.id, getUserId()) %>
         <% end %>

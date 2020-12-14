@@ -1,0 +1,22 @@
+<%= render 'main/header' %>
+<div id='content'>
+    <div id="label_list">
+        <div id="label">
+            <div class="url"><%= link_to '',
+            login_logout_path %></div><div class="title">
+            ログアウト</div>
+        </div>
+        
+        <div id="label">
+            <div class="url"><%= link_to '',
+            edit_user_path(getUserId) %></div><div class="title">
+            メールアドレスの変更</div>
+        </div>
+        
+        <div id="label">
+            <div class="url"><%= link_to '',
+            edit_profile_path(getUserId) %></div><div class="title">
+            アカウントの詳細を変更</div>
+        </div>
+    </div>
+</div>

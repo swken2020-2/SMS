@@ -1,24 +1,35 @@
-<div style=background-image: url(bg_abstract2_green.png);width:1250px;padding:20px;><h1>近畿大学福岡キャンパス</h1></div>
-<hr>
-<h2>ログイン</h2>
 <%= form_tag login_login_path, method: :post do %>
-<div id="login_main">
-    <div id="login">
-        <div class="title_text">
-            ID
-        </div>
-        <%= text_field_tag :uid, '',  class: 'text_field' %>
-        
-        <div class="title_text">
-            パスワード
-        </div>
-        <%= password_field_tag  :pass, '', class: 'text_field' %>
-        
-        <div class="submit">
-            <%= submit_tag 'ログイン', class: 'button' %>
+    <div id="login_main">
+        <div id="login">
+            <div class="title">
+                近畿大学福岡キャンパス
+            </div>
+            
+            <div class="title_text">
+                メールアドレス
+            </div>
+             <%= text_field_tag :uid, '',  class: 'text_field' %>
+            <div class="reset"></div>
+            
+            <div class="title_text">
+                パスワード
+            </div>
+            <%= password_field_tag  :pass, '', class: 'text_field' %>
+            <div class="reset"></div>
+            
+            <div class="submit">
+                <%= submit_tag 'ログイン', class: 'button' %>
+            </div>
+            
+            <div class="other">
+                <div>
+                    <%= link_to 'パスワードを忘れた', '/users/new' %>
+                </div>
+                <div>
+                    <%= link_to '新規の方はこちら', '/users/new' %>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
+    
 <% end %>
-<p><center><%= link_to '新規の方はこちら', '/users/new' %></center></p>

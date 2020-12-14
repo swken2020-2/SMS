@@ -1,31 +1,42 @@
-<div style="background-color:#EDF7FF;width:1250px;padding:20px;"><h1>近畿大学福岡キャンパス</h1></div>
-<hr>
-<h2>新規登録</h2>
-<% if @user.errors.present? %>
-<h3> <font color="red">エラーがあります。</font></h3>
-<ul>
-<% @user.errors.full_messages.each do |msg| %>
-<li><%= msg %></li>
-<% end %>
-</ul>
-<% end %>
-
 <%= form_for @user , url: {action: :create} do |f| %>
-<div id="login_main">
-  <div id="login">
-        <div class="title_text">
-            ID(メールアドレス)
+    <div id="login_main">
+        <div id="login">
+            <div class="title">
+                近畿大学福岡キャンパス
+            </div>
+            
+            <% if @user.errors.present? %>
+                <div class="error">
+                    <font color="red">エラーがあります</font>
+                    <% @user.errors.full_messages.each do |msg| %>
+                        <div>
+                            <%= msg %>
+                        </div>
+                    <% end %>
+                </div>
+            <% end %>
+            
+            <div class="title_text">
+                メールアドレス
+            </div>
+            <%= text_field_tag :email, '',  class: 'text_field' %>
+            <div class="reset"></div>
+            
+            <div class="title_text">
+                パスワード
+            </div>
+            <%= password_field_tag :password, '', class: 'text_field' %>
+            <div class="reset"></div>
+            
+            <div class="submit">
+                <%= submit_tag '登録', class: 'button' %>
+            </div>
+            
+            <div class="other">
+                <div>
+                    <%= link_to 'すでにアカウントを持っています', root_path %>
+                </div>
+            </div>
         </div>
-        <%= text_field_tag :email, '',  class: 'text_field' %>
-        
-        <div class="title_text">
-            パスワード
-        </div>
-        <%= password_field_tag :password, '', class: 'text_field' %>
-        
-        <div class="submit">
-            <%= submit_tag '登録', class: 'button' %>
-        </div>
-  </div>
-</div>
+    </div>
 <% end %>
