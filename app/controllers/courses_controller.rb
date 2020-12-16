@@ -10,7 +10,9 @@ class CoursesController < ApplicationController
         sub = Subject.find(id)
         u = User.find(getUserId)
         # u.course_registrations << sub
-        sub.course_registration_users << u
+        if !CourseRegistration.isRegistered(sub.id, getUserId)
+            sub.course_registration_users << u
+        end
         
         redirect_to courses_path
     end

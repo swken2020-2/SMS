@@ -1,0 +1,16 @@
+<%= render template: "main/_header" %>
+<div id="content">
+    <%= form_for @attachment, url: {action: :create} do |f| %>
+        <%= f.hidden_field :subject_time_id %>
+        <div>
+            <%= f.label :name, '表示名' %>
+            <%= f.text_field :name %>
+        </div>
+        <div>
+            <%= f.file_field :file %>
+        </div>
+        <div>
+            <%= f.submit '保存' %>
+        </div>
+    <% end %>
+</div>
