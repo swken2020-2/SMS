@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_16_034623) do
+ActiveRecord::Schema.define(version: 2020_12_16_051206) do
+
+  create_table "attachments", force: :cascade do |t|
+    t.integer "subject_time_id"
+    t.string "name"
+    t.binary "file"
+    t.string "filetype"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "attend_managers", force: :cascade do |t|
     t.integer "subject_id"

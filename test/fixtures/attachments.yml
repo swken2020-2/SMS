@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subject_time_id: 1
+  name: MyString
+  file: 
+  filetype: MyString
+
+two:
+  subject_time_id: 1
+  name: MyString
+  file: 
+  filetype: MyString

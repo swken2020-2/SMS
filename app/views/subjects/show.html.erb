@@ -57,31 +57,50 @@
     
     <div>
         <% @times.each do |t| %>
-            <% msg = "" %>
-            <% if !t.public %>
-                <% msg = "(これは非公開です。生徒からは見えません)" %>
-                <% next if !Subject.isTeacherOfThis(Subject.getIdFromTime(t.id), getUserId) %>
-            <% end %>
-            
             <div>
-                <%= "#{t.title}#{msg}" %>
-            </div>
-            <div>
-                <% if t.public %>
-                    <%= p "#{getAvailableTimeId(params[:id])} : #{t.id}" %>
-                    <% if getAvailableTimeId(params[:id]) != t.id %>
-                        <% if !t.check %>
-                            <%= link_to '出席確認を開けます', attend_manager_index_path(id: params[:id], time: t.id), method: :post %>
-                        <% else %>
-                            <%= link_to '出席確認を再度開けます', attend_manager_index_path(id: params[:id], time: t.id), method: :post, data: { confirm: "過去にオープンしたことがあるようです。それでもオープンしますか？" } %>
+                <% msg = "" %>
+                <%# if !t.public %>
+                <% if false %>
+                    <% msg = "(これは非公開です。生徒からは見えません)" %>
+                    <% next if !Subject.isTeacherOfThis(Subject.getIdFromTime(t.id), getUserId) %>
+                <% end %>
+                
+                <div>
+                    <%= "#{t.title}#{msg} #{Attend.getStatus(t.id, getUserId)}" %>
+                </div>
+                
+                <% t.attachment.each do |file| %>
+                    <div>
+                        <%= link_to "ファイル: #{file.name}", attachment_path(file.id), target: :_blank %>
+                        <% if Subject.isTeacherOfThis(params[:id], getUserId)%>
+                            <br />
+                            <%= link_to "ファイル: #{file.name} の削除", attachment_path(file.id), method: :delete %>
                         <% end %>
-                    <% else %>
-                        <%= link_to '出席確認を閉じます', attend_manager_path(id: params[:id], time: t.id), method: :delete %>
+                    </div>
+                    <br />
+                <% end %>
+                
+                <div>
+                    <% #if t.public %>
+                    <% if Subject.isTeacherOfThis(params[:id], getUserId) %>
+                        <% if getAvailableTimeId(params[:id]) != t.id %>
+                            <% if !t.check %>
+                                <%= link_to '出席確認を開けます', attend_manager_index_path(id: params[:id], time: t.id), method: :post %>
+                            <% else %>
+                                <%= link_to '出席確認を再度開けます', attend_manager_index_path(id: params[:id], time: t.id), method: :post, data: { confirm: "過去にオープンしたことがあるようです。それでもオープンしますか？" } %>
+                            <% end %>
+                        <% else %>
+                            <%= link_to '出席確認を閉じます', attend_manager_path(id: params[:id], time: t.id), method: :delete %>
+                        <% end %>
                     <% end %>
+                </div>
+                <% if Subject.isTeacherOfThis(params[:id], getUserId) %>
+                    <div>
+                        <%= link_to 'ファイルを追加します', new_attachment_path(tid: t.id) %>
+                    </div>
                 <% end %>
             </div>
-            
-            <%= Attend.getStatus(t.id, getUserId()) %>
+            <hr />
         <% end %>
     </div>
 </div>

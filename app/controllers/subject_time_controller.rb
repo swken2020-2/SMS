@@ -1,4 +1,6 @@
 class SubjectTimeController < ApplicationController
+    include UsersHelper
+    
     def new
         @t = SubjectTime.new
     end
@@ -11,19 +13,22 @@ class SubjectTimeController < ApplicationController
             public: pr[:public]
         )
         
-        s = Subject.find_by(id: pr[:subject_id]).subject_time
-        s << @t
-        
-        all_member = CourseRegistration.where(subject_id: pr[:subject_id]).pluck(:user_id)
-        
-        all_member.each do |users|
-            a = Attend.new(
-                subject_time_id: @t.id,
-                user_id: users,
-                status: 0
-            )
+        if Subject.isTeacherOfThis(pr[:subject_id], userid) then
             
-            a.save
+            s = Subject.find_by(id: pr[:subject_id]).subject_time
+            s << @t
+            
+            all_member = CourseRegistration.where(subject_id: pr[:subject_id]).pluck(:user_id)
+            
+            all_member.each do |users|
+                a = Attend.new(
+                    subject_time_id: @t.id,
+                    user_id: users,
+                    status: 0
+                )
+                
+                a.save
+            end
         end
         
         redirect_to subject_path(pr[:subject_id])

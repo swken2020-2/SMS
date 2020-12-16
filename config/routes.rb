@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :subject_time, only: [:new, :create, :edit, :update]
   resources :attend_manager, only: [:create, :destroy]
   resources :settings, only: [:index]
+  resources :attachment, only: [:show, :new, :create, :destroy]
   
   root'login#index'
   get 'login', to: 'login#index'
