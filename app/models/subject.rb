@@ -1,5 +1,5 @@
 class Subject < ApplicationRecord
-    has_one :subject_profile
+    has_one :subject_profile, dependent: :destroy
     has_many :course_registrations
     has_many :course_registration_users, through: :course_registrations, source: :user
     

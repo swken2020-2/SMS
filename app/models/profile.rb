@@ -1,5 +1,5 @@
 class Profile < ApplicationRecord
-    belongs_to :user
+    belongs_to :user, dependent: :destroy
     
     def self.getRole(i)
         u = User.getUserFromId(i)

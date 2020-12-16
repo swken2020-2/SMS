@@ -11,7 +11,9 @@
                 </div>
                 <div class="name">
                     <div class="decoration">
-                        <%= Subject.find(sub).subject_profile.name %>
+                        <% tag = "" %>
+                        <% tag = "★ " if isAvailable(sub) %>
+                        <%= "#{tag}#{Subject.find(sub).subject_profile.name}" %>
                     </div>
                 </div>
                 

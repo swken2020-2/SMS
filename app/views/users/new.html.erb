@@ -6,14 +6,15 @@
             </div>
             
             <% if @user.errors.present? %>
-                <div class="error">
-                    <font color="red">エラーがあります</font>
-                    <% @user.errors.full_messages.each do |msg| %>
-                        <div>
-                            <%= msg %>
-                        </div>
-                    <% end %>
-                </div>
+                <% msg = "エラーがあります。" %>
+                
+                <% @user.errors.full_messages.each do |m| %>
+                    <% msg = "#{msg} #{m}" %>
+                <% end %>
+                
+                <script>
+                    notie.alert({ type: 'error', text: "<%= msg %>", stay: true })
+                </script>
             <% end %>
             
             <div class="title_text">

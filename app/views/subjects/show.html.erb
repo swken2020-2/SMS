@@ -7,17 +7,17 @@
             </h1>
         </div>
     </div>
-    <div id="notice">
-        <div class="text">
-            <% if isAvailable(params[:id]) %>
+    <% if isAvailable(params[:id]) && isAvailableByUser(params[:id], getUserId) %>
+        <div id="notice">
+            <div class="text">
                 <% st = getAvailableTime(params[:id]) %>
-                <div class="url"><%= link_to ''
-                %></div><div class="title">
+                <div class="url"><%= link_to '',
+                attend_index_path(subject_time_id: st.subject_time_id, subject_id: params[:id]), method: :post %></div><div class="title">
                 <%= "「#{getTitleFromTimeId(st.subject_time_id)}」での出席確認を忘れないでください！
                 クリックして出席を記録します。"%></div>
-            <% end %>
+            </div>
         </div>
-    </div>
+    <% end %>
     
     <div id="s_toolbar">
         <div class="text">

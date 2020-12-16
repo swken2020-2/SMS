@@ -1,24 +1,33 @@
-<div>
-    <%= link_to '戻る', subjects_path %>
-</div>
-<% @s.each do |subject| %>
+<%= render template: "main/_header" %>
+<div id="content">
     <div>
-        <%= subject.subject_profile.name %>
-        <% if CourseRegistration.isRegistered(subject.id, getUserId) %>
-            <div>
-                すでに履修中です 
-                <%= link_to(course_path(id: subject.id), method: :delete) do %>
-                    <% if !isTeacher %>
-                        <button class="button">
-                            <div class="decoration">履修を取り消す</div>
-                        </button>
-                    <% end %>
-                <% end %>
-            </div>
-        <% else %>
-            <div>
-                <%= link_to '登録する', courses_path(id: subject.id), method: :create %>
+        <%= link_to '戻る', subjects_path %>
+    </div>
+    
+    <div id="group">
+        <% @s.each do |subject| %>
+            <% next if CourseRegistration.isRegistered(subject.id, getUserId) %>
+            <div id="subject_plate" style="background-image: url(/image/subject?id=<%= subject.id %>)">
+                <div class="link">
+                    <%#= link_to '登録する', courses_path(id: subject.id), method: :create %>
+                    <%= link_to '', subject_profile_path(subject.id) %>
+                </div>
+                
+                <div class="name">
+                    <div class="decoration">
+                        <%= subject.subject_profile.name %>
+                    </div>
+                </div>
+                
+                <div class="teacher_name">
+                    <div class="text">
+                        <div class="decoration">
+                            <% subc = Subject.find_by(id: subject.id) %>
+                            <%= User.find_by(id: subc.subject_profile.teacher_id).profile.name %>
+                        </div>
+                    </div>
+                </div>
             </div>
         <% end %>
     </div>
-<% end %>
+</div>

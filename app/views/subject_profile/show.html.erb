@@ -14,4 +14,13 @@
     <div>
         <%= @sp.description %>
     </div>
+    <% if !CourseRegistration.isRegistered(params[:id], getUserId) && User.isStudent(getUserId) %>
+        <div>
+            <%= link_to '登録する', courses_path(id: params[:id]), method: :create %>
+        </div>
+    <% end %>
+    
+    <% if Subject.isTeacherOfThis(params[:id], getUserId) %>
+        <%= link_to '編集する', edit_subject_profile_path(params[:id]) %>
+    <% end %>
 </div>

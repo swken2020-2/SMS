@@ -4,12 +4,12 @@ class User < ApplicationRecord
     validates :email,format:{with: /\A[\w+\-]+@[a-z\d\-.]+\.[a-z]+\z/i}
     validates :password, presence: true
     validates :password, length: { minimum: 8 }
-    has_one :profile
+    has_one :profile, dependent: :destroy
     
     #has_many :subject_profiles
     
     # 履修
-    has_many :course_registrations
+    has_many :course_registrations, dependent: :destroy
     has_many :course_registration_subjects, through: :course_registrations, source: :subject
     
     def self.authenticate(email, pass)

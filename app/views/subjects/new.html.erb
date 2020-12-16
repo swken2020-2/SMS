@@ -1,24 +1,5 @@
 <%= render template: "main/_header" %>
 <div id="content">
-    <div>
-        <%= image_tag("/image/subject?id=#{params[:id]}") %>
-    </div>
-    
-    <%= form_for @s, url: {action: :create} do |f| %>
-        <div>
-            <%= f.label :name, '科目名' %>
-            <%= f.text_field :name %>
-        </div>
-        
-        <div>
-            <%= f.label :description, 'この講義の説明' %>
-            <%= f.text_area :description %>
-        </div>
-        
-        <div>
-            <%= f.file_field :image %>
-        </div>
-        
-        <%= f.submit '作成' %>
-    <% end %>
+    <% @action_type = :create %>
+    <%= render template: 'subject_profile/_form' %>
 </div>

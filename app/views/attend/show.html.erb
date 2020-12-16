@@ -13,11 +13,15 @@
                 <th>
                 ステータス
                 </th>
+                <th>
+                    IPアドレス
+                </th>
             </tr>
             
             <% t[:time].each do |t2| %>
                 <% msg = "" %>
                 <% if !CourseRegistration.isRegistered(params[:id], t2.user_id) %>
+                    <% next %>
                     <% msg = "(履修取り消し)" %>
                 <% end %>
                 <tr>
@@ -26,6 +30,9 @@
                     </td>
                     <td>
                         <%= Attend.status2str(t2.status) %>
+                    </td>
+                    <td>
+                        <%= t2.ip %>
                     </td>
                 </tr>
             <% end %>

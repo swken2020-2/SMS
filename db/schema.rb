@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_14_075042) do
+ActiveRecord::Schema.define(version: 2020_12_16_034623) do
 
   create_table "attend_managers", force: :cascade do |t|
     t.integer "subject_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_12_14_075042) do
     t.string "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ip"
   end
 
   create_table "course_registrations", force: :cascade do |t|

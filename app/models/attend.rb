@@ -35,7 +35,7 @@ class Attend < ApplicationRecord
         return -1 if status < 0
         case status
             when 0 then
-                return "unknown"
+                return "不明"
             when 1 then
                 return "出席"
             when 2 then
@@ -46,8 +46,6 @@ class Attend < ApplicationRecord
                 return "早退"
             when 5 then
                 return "公欠"
-            when 6 then
-                return "不明"
             else
                 return "-over"
         end

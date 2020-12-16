@@ -1,0 +1,22 @@
+<% if flash[:func] %>
+    <script>
+        <% type = "error" %>
+        <% type = flash[:type] if flash[:type] %>
+        
+        <% message = "message" %>
+        <% message = flash[:message] if flash[:message] %>
+        
+        <% stay = true %>
+        <% stay = flash[:stay] if !flash[:stay].nil? %>
+        
+        <% time = 5 %>
+        <% time = flash[:time] if flash[:time] %>
+        
+        <% position = "top" %>
+        <% position = flash[:position] if flash[:position] %>
+        
+        
+        notie.<%= flash[:func] %>({ type: '<%= flash[:type] %>', text: '<%= flash[:message] %>', stay: <%= flash[:stay] %>, time: <%= time %>, position: '<%= position %>' })
+    </script>
+    <% flash.clear %>
+<% end %>

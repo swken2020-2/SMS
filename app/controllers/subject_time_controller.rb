@@ -13,6 +13,19 @@ class SubjectTimeController < ApplicationController
         
         s = Subject.find_by(id: pr[:subject_id]).subject_time
         s << @t
+        
+        all_member = CourseRegistration.where(subject_id: pr[:subject_id]).pluck(:user_id)
+        
+        all_member.each do |users|
+            a = Attend.new(
+                subject_time_id: @t.id,
+                user_id: users,
+                status: 0
+            )
+            
+            a.save
+        end
+        
         redirect_to subject_path(pr[:subject_id])
     end
     

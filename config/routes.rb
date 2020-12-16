@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   
   resources :subjects
   resources :courses, only: [:index, :create, :destroy]
-  resources :attend, only: [:show, :edit, :update]
+  resources :attend, only: [:create, :show, :edit, :update]
   resources :users, only: [:new, :create, :edit, :update, :show]
   get 'users', to: 'users#new' # リロード対策
   resources :profile, only: [:edit, :update]

@@ -1,0 +1,25 @@
+<div>
+    <%= image_tag("/image/subject?id=#{params[:id]}") %>
+</div>
+
+<%= form_for @s, url: {action: @action_type} do |f| %>
+    <% if @action_type == :update %>
+        <%= f.hidden_field :id, :value => params[:id] %>
+    <% end %>
+    
+    <div>
+        <%= f.label :name, '科目名' %>
+        <%= f.text_field :name %>
+    </div>
+    
+    <div>
+        <%= f.label :description, 'この講義の説明' %>
+        <%= f.text_area :description %>
+    </div>
+    
+    <div>
+        <%= f.file_field :image %>
+    </div>
+    
+    <%= f.submit '保存' %>
+<% end %>
