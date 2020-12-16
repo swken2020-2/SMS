@@ -13,7 +13,7 @@ class SubjectTimeController < ApplicationController
             public: pr[:public]
         )
         
-        if Subject.isTeacherOfThis(pr[:subject_id], userid) then
+        if Subject.isTeacherOfThis(pr[:subject_id], getUserId) then
             
             s = Subject.find_by(id: pr[:subject_id]).subject_time
             s << @t
