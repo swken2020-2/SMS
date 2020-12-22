@@ -35,7 +35,7 @@ class Attend < ApplicationRecord
         return -1 if status < 0
         case status
             when 0 then
-                return "不明"
+                return ""
             when 1 then
                 return "出席"
             when 2 then
